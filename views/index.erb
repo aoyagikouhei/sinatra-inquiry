@@ -1,0 +1,31 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <form id="form" action="/inquiry/index" method="post">
+      <input type="hidden" name="opened" value="1"/>
+      氏名:<input type="text" name="name" value="<%= h @name %>"/>
+      <% if @name.blank? && !@opened.blank? %>
+        <br/>氏名を入力してください。
+      <% end %>
+      <br/>
+      会社名:<input type="text" name="company" value="<%= h @company %>"/>
+      <% if @company.blank? && !@opened.blank? %>
+        <br/>会社名を入力してください。
+      <% end %>
+      <br/>
+      内容:<textarea name="content"><%= h @content %></textarea>
+      <% if @content.blank? && !@opened.blank? %>
+        <br/>内容を入力してください。
+      <% end %>
+      <br/>
+    </form>
+    <a href="javascript:exec()">確認</a>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      function exec() {
+        jQuery("#form").submit();
+      }
+    </script>
+  </body>
+</html>

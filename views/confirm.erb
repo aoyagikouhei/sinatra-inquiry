@@ -1,0 +1,28 @@
+<html>
+  <head>
+  </head>
+  <body>
+    氏名:<%= h @name %>
+    <br/>
+    会社名:<%= h @company %>
+    <br/>
+    内容:<br/>
+    <%= h(@content).gsub(/\n/, '<br/>') %>
+    <br/>
+    <a href="javascript:exec('0')">戻る</a>&nbsp;<a href="javascript:exec('1')">送信</a>
+    <form id="form" action="/inquiry/confirm" method="post">
+      <input type="hidden" name="opened" value="1"/>
+      <input id="confirm" type="hidden" name="confirm" value="0"/>
+      <input type="hidden" name="name" value="<%= h @name %>"/>
+      <input type="hidden" name="company" value="<%= h @company %>"/>
+      <input type="hidden" name="content" value="<%= h @content %>"/>
+    </form>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      function exec(val) {
+        jQuery("#confirm").val(val);
+        jQuery("#form").submit();
+      }
+    </script>
+  </body>
+</html>

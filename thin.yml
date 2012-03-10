@@ -1,0 +1,12 @@
+---
+environment: development
+timeout: 30
+log: /tmp/log/inquiry.log
+pid: /tmp/pid/inquiry.pid
+max_conns: 1024
+max_persistent_conns: 512
+require: []
+wait: 30
+daemonize: true
+socket: /tmp/sock/inquiry.sock
+servers: 1
