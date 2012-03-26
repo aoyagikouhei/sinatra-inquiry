@@ -1,0 +1,33 @@
+-# Encoding:utf-8
+%h1
+  log
+%div
+  all #{@count}
+  - if @page > 1
+    %a{href: "/log?page=" + (@page - 1).to_s}
+      prev
+  - else
+    prev
+  - if @page < (@count.to_f / @cpp.to_f).ceil
+    %a{href: "/log?page=" + (@page + 1).to_s}
+      next
+  - else
+    next
+%div
+  %select#level
+    - [
+%table
+  %tr
+    %th レベル
+    %th 日付
+    %th メッセージ
+  - @list.each do |it|
+    %tr
+      %td= it["l"]
+      %td= make_time(it["i"])
+      %td= it["m"]
+%script{type: "text/javascript", src: "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
+:javascript
+  jQuery(function(){
+    alert('aaa');
+  });
